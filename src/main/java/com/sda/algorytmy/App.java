@@ -1,49 +1,95 @@
 package com.sda.algorytmy;
-import java.util.Arrays;
 import java.util.Random;
-
-public class App 
+public class App
 {
-    public static int[] sort(int[]tab){
-        for (int i=0; i<tab.length - 1; i++){
-            if (tab[i] > tab[i+1]){
-                //zamiana miejscami
-                int tmp = tab[i+1];
-                tab [i+1] = tab[i];
-                tab[i] = tmp;
+
+    public static int[] BubbleSort(int [] tab, int n){
+
+        int tmp;
+
+        while(n>0)
+
+        {
+
+            for(int i =0; i<n-1;i++)
+
+            {
+
+                if(tab[i]>tab[i+1])
+
+                {
+
+                    tmp = tab[i];
+
+                    tab[i]=tab[i+1];
+
+                    tab[i+1] = tmp;
+
+                }
+
             }
+
+            n--;
+
         }
-        System.out.println(Arrays.toString(tab));
-        return  tab;
+
+        return tab;
 
     }
 
-    public static void main( String[] args ) throws InstantiationException{
-        Random random = new Random();
+    public static void main( String[] args )
+
+    {
+        int n = 10000;
+
         int max = 5000;
+
         int min = -5000;
 
-        // stworzyc tablice o rozmiarze 1000, ktora bedzie zawierala
-        // liczby losowe z zakresu -5000 do 5000
+        int [] tab = new int[n];
 
-               int[] tab = new int[10000];
-               long starTime = System.currentTimeMillis();
-               for (int i=0; i<tab.length; i++){
-                   int randomNumber = random.nextInt(max - min +1) + min;
-                   tab[i] = randomNumber;
-               }
-               long endTime = System.currentTimeMillis();
-               long totalTime = endTime - starTime;
-               System.out.println("Czas wykonywania: " + totalTime);
-               starTime = System.currentTimeMillis();
-               sort(tab);
-               endTime = System.currentTimeMillis();
-               totalTime = endTime - starTime;
-               System.out.println("Czas sortowania: " + totalTime);
+        Random r= new Random();
+
+        long startTime = System.currentTimeMillis();
+
+        for(int i =0; i<n;i++)
+
+        {
+
+            int t=r.nextInt(max-min+1)-min;
+
+            tab[i]=t;
         }
+
+        long endTime = System.currentTimeMillis();
+
+        long totalTime = endTime-startTime;
+
+        System.out.println("Czas wykonania: "+totalTime);
+
+        /*for(int i =0; i<n;i++) {
+
+            System.out.println(tab[i]);
+        }*/
+
+        long startTime1 = System.currentTimeMillis();
+
+        BubbleSort(tab, n);
+
+        long endTime1 = System.currentTimeMillis();
+
+        long Time1 = endTime1-startTime1;
+
+        System.out.println("Czas sortowania tablicy(w sekundach): "+Time1/1000+" oraz w milisekundach "+Time1);
+
+        for(int i = 0; i<n;i++)
+
+        {
+
+            System.out.println(tab[i]);
+
+        }
+
     }
 
-
-
-
-
+}
