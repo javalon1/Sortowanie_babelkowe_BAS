@@ -1,8 +1,23 @@
 package com.sda.algorytmy;
+import java.util.Arrays;
 import java.util.Random;
 
 public class App 
 {
+    public static int[] sort(int[]tab){
+        for (int i=0; i<tab.length - 1; i++){
+            if (tab[i] > tab[i+1]){
+                //zamiana miejscami
+                int tmp = tab[i+1];
+                tab [i+1] = tab[i];
+                tab[i] = tmp;
+            }
+        }
+        System.out.println(Arrays.toString(tab));
+        return  tab;
+
+    }
+
     public static void main( String[] args ) throws InstantiationException{
         Random random = new Random();
         int max = 5000;
@@ -20,8 +35,14 @@ public class App
                long endTime = System.currentTimeMillis();
                long totalTime = endTime - starTime;
                System.out.println("Czas wykonywania: " + totalTime);
+               starTime = System.currentTimeMillis();
+               sort(tab);
+               endTime = System.currentTimeMillis();
+               totalTime = endTime - starTime;
+               System.out.println("Czas sortowania: " + totalTime);
         }
     }
+
 
 
 
