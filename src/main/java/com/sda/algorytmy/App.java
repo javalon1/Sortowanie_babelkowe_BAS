@@ -1,8 +1,45 @@
 package com.sda.algorytmy;
 import java.util.Arrays;
 import java.util.Random;
-
 public class App {
+
+    public static int[] sort(int[] tab){
+
+        int counter = 0;
+
+        for (int j =0; j<tab.length -1 ; j++) {
+
+            boolean flaga = false;
+
+            for (int i = 0; i < tab.length - j - 1; i++) {
+
+                if (tab[i] > tab[i + 1]) {
+
+                    //zamiana miejscami
+
+                    int tmp = tab[i + 1];
+                    tab[i + 1] = tab[i];
+                    tab[i] = tmp;
+                    flaga = true;
+
+                }
+
+                counter++;
+            }
+
+            if(!flaga){
+
+                break;
+            }
+        }
+
+        System.out.println(Arrays.toString(tab));
+
+        System.out.println("petle sie przekrecila = " + counter);
+
+        return tab;
+
+    }
 
     public static void main(String[] args) {
 
@@ -12,67 +49,38 @@ public class App {
 
         int min = -5000;
 
-        int[] tab = new int[200];
+        int [] tab = new int [20];
 
         long startTime = System.currentTimeMillis();
 
-        for (int i = 0; i < tab.length; i++) {
+        for(int i=0;i<tab.length;i++)
 
-            int randomMunber = random.nextInt(max - min + 1) - max;
+        {
 
-            tab[i] = randomMunber;
+            int randomNumber = random.nextInt(max - min + 1) + min;
+
+            tab[i]=randomNumber;
+
+            System.out.println(tab[i]);
 
         }
-
-        //przed sortowaniem
-
-        System.out.println(Arrays.toString(tab));
 
         long endTime = System.currentTimeMillis();
 
-        long totaTime = endTime - startTime;
+        long totalTime = endTime - startTime;
 
-        System.out.println("Czas wykonania  " + totaTime);
+        System.out.println("czas wykonian = " + totalTime);
 
-        startTime = System.currentTimeMillis();
+        startTime =System.currentTimeMillis();
 
         sort(tab);
 
-        endTime = System.currentTimeMillis();
+        endTime=System.currentTimeMillis();
 
-        totaTime = endTime - startTime;
+        totalTime = endTime - startTime;
 
-        System.out.println("czas sortowania " + totaTime);
-
-        //po sortowaniu
-
-        System.out.println(Arrays.toString(tab));
-    }
-
-    public static int[] sort(int[] tab){
-
-        int temp =0;
-
-        for (int j = 0; j < tab.length ; j++) {
-
-            for (int i = 0; i < tab.length - 1; i++) {
-
-                if (tab[i] > tab[i + 1]) {
-
-                    temp = tab[i + 1];
-
-                    tab[i + 1] = tab[i];
-
-                    tab[i] = temp;
-
-                }
-            }
-        }
-
-        return tab;
+        System.out.println("czas sortowania = " + totalTime);
 
     }
-
-
 
 }
