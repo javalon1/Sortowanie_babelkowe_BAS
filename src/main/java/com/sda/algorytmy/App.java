@@ -40,7 +40,7 @@ public class App
     public static void main( String[] args )
 
     {
-        int n = 10000;
+        int n = 200;
 
         int max = 5000;
 
@@ -65,7 +65,7 @@ public class App
 
         long totalTime = endTime-startTime;
 
-        System.out.println("Czas wykonania: "+totalTime);
+        System.out.println("Czas wykonania: " + totalTime);
 
         /*for(int i =0; i<n;i++) {
 
